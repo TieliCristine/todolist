@@ -1,0 +1,42 @@
+@use "../../../node_modules/@material/tooltip/index" as tooltip;
+@use '../../../node_modules/@angular/material/index' as mat;
+
+@mixin tooltip-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $primary-color: mat.get-color-from-palette($primary);
+
+  .mdc-tooltip__surface {
+    background: $primary-color;
+    border-radius: 0.35rem;
+  }
+
+  .tooltip-empty .mdc-tooltip__surface {
+    @extend .bg-empty;
+  }
+
+  .tooltip-primary .mdc-tooltip__surface {
+    @extend .bg-primary;
+  }
+
+  .tooltip-secondary .mdc-tooltip__surface {
+    @extend .bg-secondary;
+  }
+
+  .tooltip-success .mdc-tooltip__surface {
+    @extend .bg-success;
+  }
+
+  .tooltip-info .mdc-tooltip__surface {
+    @extend .bg-info;
+  }
+
+  .tooltip-warning .mdc-tooltip__surface {
+    @extend .bg-warning;
+  }
+
+  .tooltip-danger .mdc-tooltip__surface {
+    @extend .bg-danger;
+  }
+
+}

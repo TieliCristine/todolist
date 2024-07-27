@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$orange-palette,
+  ),
+  typography: (
+    plain-family: 'Dosis, sans-serif', //use for plain text, such as body text
+    brand-family: 'Dosis, sans-serif', //use for brand text, such as headlines
+    bold-weight: 900, //use for bold text
+    medium-weight: 400, //use for medium text
+    regular-weight: 200, //use for regular text
+  ),
+  density: (scale: -1)
+));

@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+
+
+@mixin toolbar-color($theme) {
+
+  $type: mat.get-theme-type($theme);
+  $bg-color: #000000;
+
+  @if ($type == 'light') {
+    $bg-color: #F5FFF2;
+  } @else {
+    $bg-color: #201B16
+  }
+
+  .toolbar {
+    //background:  url('/assets/img/toolbar-01.png') $bg-color;
+    //background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    height: 9rem;
+  }
+  //
+  //.footer {
+  //    position: absolute;
+  //    bottom: 0;
+  //    z-index: 2;
+  //}
+}

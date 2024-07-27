@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+@mixin form-field-custom($theme) {
+
+  $gray: mat.get-theme-color($theme, outline);
+  $danger: mat.get-theme-color($theme, error);
+  $primary: mat.get-theme-color($theme, primary);
+
+  .form-field-custom {
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .mdc-text-field--outlined {
+      --mdc-outlined-text-field-container-shape: 2rem !important;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      height: 2rem;
+    }
+  }
+}

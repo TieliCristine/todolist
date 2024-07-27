@@ -1,0 +1,15 @@
+@import "icon-custom";
+@import "btn-custom";
+@import "form-field-custom";
+@import "card-custom";
+
+
+/* -------------------------------------- Paleta de Cores Material ---------------------------------------------- */
+
+@mixin mixins($theme) {
+
+  @include card-custom($theme);
+  @include icon-custom();
+  @include btn-custom($theme);
+  @include form-field-custom($theme);
+}

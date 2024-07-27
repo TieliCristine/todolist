@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use 'theme/light';
+@use 'theme/dark';
+@use 'theme/mixins/utils';
+
+@include mat.core();
+
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  @include mat.all-component-themes(light.$theme);
+  @include utils.mixins(light.$theme);
+
+  @media (prefers-color-scheme: dark) {
+    .dark-theme {
+      @include mat.all-component-themes(dark.$theme);
+      @include utils.mixins(dark.$theme);
+    }
+  }
+}
