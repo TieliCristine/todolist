@@ -1,30 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInput } from "@angular/material/input";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { merge } from "rxjs";
-import { MatButton, MatIconButton } from "@angular/material/button";
-import { MatIcon } from "@angular/material/icon";
-import { MatRadioButton } from "@angular/material/radio";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatRadioModule } from "@angular/material/radio";
 
 @Component({
   selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInput,
+    MatInputModule,
     ReactiveFormsModule,
-    MatIconButton,
-    MatIcon,
-    MatButton,
-    MatRadioButton
-  ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    MatIconModule,
+    MatButtonModule,
+    MatRadioModule
+  ]
 })
 export class LoginComponent {
   username?: string;

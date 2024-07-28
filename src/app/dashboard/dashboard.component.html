@@ -1,7 +1,159 @@
 <div class="app-container">
+  <div>
+    <mat-toolbar>
+      <div>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div>
+        My ToDo List
+      </div>
+      <div></div>
+    </mat-toolbar>
+  </div>
+  <div>
+    <mat-sidenav-container class="inner-container">
+      <mat-sidenav #sidenav mode="side">
+        Sidenav content
+      </mat-sidenav>
+      <mat-sidenav-content>
 
-  <mat-toolbar>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>
 
-  </mat-toolbar>
+              <button mat-button [cdkMenuTriggerFor]="menu" class="example-standalone-trigger">A fazer</button>
+
+              <ng-template #menu>
+                <div class="example-menu" cdkMenu>
+                  <button class="example-menu-item" cdkMenuItem>Refresh</button>
+                  <button class="example-menu-item" cdkMenuItem>Settings</button>
+                  <button class="example-menu-item" cdkMenuItem>Help</button>
+                  <button class="example-menu-item" cdkMenuItem>Sign out</button>
+                </div>
+              </ng-template>
+
+
+
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+
+            <div class="toDo-card">
+              <div
+                cdkDropList
+                #todoList="cdkDropList"
+                [cdkDropListData]="todo"
+                [cdkDropListConnectedTo]="[doneList, inProgressList]"
+                class="drag-drop-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of todo; track item) {
+                  <div class="task" cdkDrag>{{ item }}</div>
+                }
+              </div>
+            </div>
+
+
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>
+              <button mat-button [cdkMenuTriggerFor]="menu" class="example-standalone-trigger">Em progresso</button>
+
+              <ng-template #menu>
+                <div class="example-menu" cdkMenu>
+                  <button class="example-menu-item" cdkMenuItem>Refresh</button>
+                  <button class="example-menu-item" cdkMenuItem>Settings</button>
+                  <button class="example-menu-item" cdkMenuItem>Help</button>
+                  <button class="example-menu-item" cdkMenuItem>Sign out</button>
+                </div>
+              </ng-template>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+
+
+            <div class="inProgress-card">
+              <div
+                cdkDropList
+                #inProgressList="cdkDropList"
+                [cdkDropListData]="inProgress"
+                [cdkDropListConnectedTo]="[todoList, doneList]"
+                class="drag-drop-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of inProgress; track item) {
+                  <div class="task" cdkDrag>{{ item }}</div>
+                }
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>
+              <button mat-button [cdkMenuTriggerFor]="menu" class="example-standalone-trigger">Feito</button>
+
+              <ng-template #menu>
+                <div class="example-menu" cdkMenu>
+                  <button class="example-menu-item" cdkMenuItem>Refresh</button>
+                  <button class="example-menu-item" cdkMenuItem>Settings</button>
+                  <button class="example-menu-item" cdkMenuItem>Help</button>
+                  <button class="example-menu-item" cdkMenuItem>Sign out</button>
+                </div>
+              </ng-template>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+
+            <div class="done-card">
+              <div
+                cdkDropList
+                #doneList="cdkDropList"
+                [cdkDropListData]="done"
+                [cdkDropListConnectedTo]="[todoList, inProgressList]"
+                class="drag-drop-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of done; track item) {
+                  <div class="task" cdkDrag>
+                      {{ item }}
+                    </div>
+                }
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>
+              <button mat-button [cdkMenuTriggerFor]="menu" class="example-standalone-trigger">Adicionar etapa +</button>
+
+              <ng-template #menu>
+                <div class="example-menu" cdkMenu>
+                  <button class="example-menu-item" cdkMenuItem>Refresh</button>
+                  <button class="example-menu-item" cdkMenuItem>Settings</button>
+                  <button class="example-menu-item" cdkMenuItem>Help</button>
+                  <button class="example-menu-item" cdkMenuItem>Sign out</button>
+                </div>
+              </ng-template>
+              Adicionar etapa +
+            </mat-card-subtitle>
+          </mat-card-header>
+
+        </mat-card>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+  </div>
+
 
 </div>
