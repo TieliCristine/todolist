@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule, NgForOf } from '@angular/common';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
@@ -6,12 +7,14 @@ import { MatCardModule } from "@angular/material/card";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { FormsModule } from "@angular/forms";
 import {
-  CdkDragDrop,
   DragDropModule,
-  moveItemInArray,
-  transferArrayItem
 } from "@angular/cdk/drag-drop";
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
+import { MatListModule } from "@angular/material/list";
+
+import { ModalService } from "../../../@core/services/modal.service";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { MatLine } from "@angular/material/core";
 
 @Component({
   selector: 'app-dashboard',
@@ -30,25 +33,32 @@ import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
     CdkMenuTrigger,
     CdkMenu,
     CdkMenuItem,
+    MatListModule,
+    CommonModule,
+    NgForOf,
+    RouterLink,
+    MatLine,
+    RouterOutlet
   ]
 })
 export class DashboardComponent {
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  inProgress = [ 'clean house', 'wash the dishes', 'try something new' ];
+  links = [
+    { name: 'Início', icon: 'home', path: '/dashboard' },
+    { name: 'Caixa de Entrada', icon: 'info', path: '/dashboard/inbox' },
+    { name: 'Minhas Tarefas', icon: 'contact_mail', path: '/dashboard/tasks' },
+  ];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  constructor(
+    private modalService: ModalService
+  ) {
+  }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
+  showInfo(link: string) {
+    console.log(link);
+  }
+
+  openModal(link: any): void {
+    this.modalService.openModal(link.name, link.content);
   }
 }

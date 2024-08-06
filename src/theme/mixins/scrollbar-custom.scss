@@ -1,0 +1,34 @@
+@use '@angular/material' as mat;
+
+@mixin scrollbar-custom() {
+
+  /* Estilos para navegadores baseados no WebKit (Chrome, Safari, Edge moderno) */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 1rem; /* Largura da scrollbar */
+    background: transparent; /* Fundo transparente */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: rgba(108, 34, 143, 0.15); /* Cor da "polegar" da scrollbar com transparência */
+    border-radius: 4px; /* Cantos arredondados */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 27, 133, 0.36); /* Cor da "polegar" da scrollbar quando em hover */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent; /* Fundo da track transparente */
+  }
+
+  /* Estilos para o Firefox */
+  .scrollbar-custom {
+    scrollbar-width: thin; /* Largura fina */
+    scrollbar-color: rgba(108, 34, 143, 0.15) transparent; /* Cor da scrollbar e fundo */
+  }
+
+  .scrollbar-custom:hover {
+    scrollbar-color: rgba(102, 27, 133, 0.36) transparent; /* Cor da scrollbar quando em hover */
+  }
+
+}

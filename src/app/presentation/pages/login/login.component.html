@@ -4,11 +4,12 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="form-field-custom">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-field-custom">
         <mat-form-field appearance="outline">
           <mat-label>Enter your email</mat-label>
           <input
             matInput
+            formControlName="email"
             placeholder="pat@example.com"
             required
           />
@@ -17,9 +18,11 @@
           <mat-label>Enter your password</mat-label>
           <input
             matInput
+            formControlName="password"
             [type]="hide() ? 'password' : 'text'"
             required
           />
+
           <button
             mat-icon-button
             matSuffix

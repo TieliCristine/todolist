@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
 
-@mixin toolbar-color($theme) {
+@mixin toolbar-custom($theme) {
 
   $type: mat.get-theme-type($theme);
   $bg-color: #000000;
@@ -13,8 +13,6 @@
   }
 
   .toolbar {
-    //background:  url('/assets/img/toolbar-01.png') $bg-color;
-    //background-size: cover;
     display: flex;
     justify-content: space-between;
     height: 9rem;
@@ -25,4 +23,18 @@
   //    bottom: 0;
   //    z-index: 2;
   //}
+
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+
+    background: rgba(255, 255, 255, 0.37);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.2px);
+    -webkit-backdrop-filter: blur(3.2px);
+
+    height: 4rem;
+    margin-left: 1rem;
+    border-radius: 1rem 0 0 1rem;
+  }
 }

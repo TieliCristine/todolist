@@ -1,0 +1,31 @@
+<div class="app-container ">
+  <div>
+    <mat-toolbar>
+      <div>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div>
+          My ToDo List
+      </div>
+      <div></div>
+    </mat-toolbar>
+  </div>
+  <div>
+    <mat-sidenav-container class="inner-container">
+      <mat-sidenav #sidenav mode="side">
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let link of links" [routerLink]="link.path">
+            <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+            <span matLine>{{ link.name }}</span>
+          </a>
+        </mat-nav-list>
+
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

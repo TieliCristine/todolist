@@ -1,0 +1,30 @@
+.mat-dialog-container {
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2.mat-dialog-title {
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+mat-dialog-content {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+mat-dialog-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-dialog-actions button {
+  margin-left: 8px;
+}

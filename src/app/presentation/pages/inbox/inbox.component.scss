@@ -1,0 +1,31 @@
+.inbox-container {
+
+  .mat-grid-list {
+    margin: 0.5rem 0 2rem 1rem;
+  }
+
+  .mat-grid-tile {
+    border-radius: 1.5rem;
+
+    mat-grid-tile-header, mat-grid-tile-footer {
+      background-color: rgba(124, 105, 105, 0.28);
+      display: flex;
+    }
+
+    mat-grid-tile-header {
+      flex-direction: column;
+
+      .message-title {
+        font-weight: bold;
+      }
+
+      .message-sender {
+        color: rgba(60, 60, 60, 0.52);
+      }
+    }
+
+    mat-grid-tile-footer {
+      justify-content: right;
+    }
+  }
+}

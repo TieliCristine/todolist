@@ -1,0 +1,50 @@
+@use '@angular/material' as mat;
+
+@mixin drag-drop-custom($theme) {
+  .drag-drop-list {
+    min-height: 60px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .task {
+    background: rgba(255, 255, 255, 0.54);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+
+    padding: 20px 10px;
+    border-radius: 1.5rem;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+
+  .cdk-drag-preview {
+    background: rgba(255, 255, 255, 0.72);
+    box-sizing: border-box;
+    border-radius: 1.5rem;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .task:last-child {
+    border: none;
+  }
+
+  .drag-drop-list.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}

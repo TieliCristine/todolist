@@ -1,0 +1,117 @@
+<div class="tasks-container">
+
+    <mat-toolbar class="actions-bar">
+      barra de ações para tarefas
+    </mat-toolbar>
+
+  <div class="tasks-card">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">A fazer</button>
+          <ng-template #menu>
+            <div class="menu" cdkMenu>
+              <button class="menu-item" cdkMenuItem>Refresh</button>
+              <button class="menu-item" cdkMenuItem>Settings</button>
+              <button class="menu-item" cdkMenuItem>Help</button>
+              <button class="menu-item" cdkMenuItem>Sign out</button>
+            </div>
+          </ng-template>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="scrollable-content scrollbar-custom">
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList, inProgressList]"
+            class="drag-drop-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of todo; track item) {
+              <div class="task" cdkDrag>{{ item }}</div>
+            }
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Em progresso</button>
+          <ng-template #menu>
+            <div class="menu" cdkMenu>
+              <button class="menu-item" cdkMenuItem>Refresh</button>
+              <button class="menu-item" cdkMenuItem>Settings</button>
+              <button class="menu-item" cdkMenuItem>Help</button>
+              <button class="menu-item" cdkMenuItem>Sign out</button>
+            </div>
+          </ng-template>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="scrollable-content scrollbar-custom">
+          <div
+            cdkDropList
+            #inProgressList="cdkDropList"
+            [cdkDropListData]="inProgress"
+            [cdkDropListConnectedTo]="[todoList, doneList]"
+            class="drag-drop-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of inProgress; track item) {
+              <div class="task" cdkDrag>{{ item }}</div>
+            }
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Feito</button>
+          <ng-template #menu>
+            <div class="menu" cdkMenu>
+              <button class="menu-item" cdkMenuItem>Refresh</button>
+              <button class="menu-item" cdkMenuItem>Settings</button>
+              <button class="menu-item" cdkMenuItem>Help</button>
+              <button class="menu-item" cdkMenuItem>Sign out</button>
+            </div>
+          </ng-template>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="scrollable-content scrollbar-custom">
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList, inProgressList]"
+            class="drag-drop-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of done; track item) {
+              <div class="task" cdkDrag>
+                {{ item }}
+              </div>
+            }
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Adicionar etapa +</button>
+          <ng-template #menu>
+            <div class="menu" cdkMenu>
+              <button class="menu-item" cdkMenuItem>Refresh</button>
+              <button class="menu-item" cdkMenuItem>Settings</button>
+              <button class="menu-item" cdkMenuItem>Help</button>
+              <button class="menu-item" cdkMenuItem>Sign out</button>
+            </div>
+          </ng-template>
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
