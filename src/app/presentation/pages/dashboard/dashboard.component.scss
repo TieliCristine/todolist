@@ -1,17 +1,8 @@
 .app-container {
-  background: no-repeat url("../../../../assets/backgrounds-canva/3.png");
-  background-size: cover;
-
   height: 100vh; /* Ocupa a altura total da viewport */
 }
 
-mat-toolbar {
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.37);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3.2px);
-  -webkit-backdrop-filter: blur(3.2px);
-
+.mat-toolbar {
   display: flex;
   justify-content: space-between;
 
@@ -19,7 +10,7 @@ mat-toolbar {
 }
 
 .inner-container {
-  background: rgba(255, 255, 255, 0);
+  background: #FFFFFF00;
   position: absolute;
   overflow-x: auto;
 
@@ -33,14 +24,8 @@ mat-toolbar {
   }
 
   .mat-drawer.mat-drawer-side {
-    background: rgba(255, 255, 255, 0.37);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.2px);
-    -webkit-backdrop-filter: blur(3.2px);
-
     padding-left: 1rem;
     padding-top: 1rem;
     max-width: 16rem;
-
   }
 }

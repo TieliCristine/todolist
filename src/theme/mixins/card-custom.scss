@@ -1,8 +1,8 @@
 @use '@angular/material' as mat;
 
 @mixin card-custom($theme) {
-  .custom-card {
-    color: mat.get-theme-color($theme, inverse-surface);
+
+  .card-custom {
     padding: 20px;
 
     mat-card-header {
@@ -12,6 +12,4 @@
       padding: 16px;
     }
   }
-
-
 }

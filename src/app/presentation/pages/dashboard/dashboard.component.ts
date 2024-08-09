@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule, NgForOf } from '@angular/common';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
@@ -12,9 +12,10 @@ import {
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
 import { MatListModule } from "@angular/material/list";
 
-import { ModalService } from "../../../@core/services/modal.service";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { MatLine } from "@angular/material/core";
+
+import { ThemeService } from "../../../@core/services/theme.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -41,7 +42,7 @@ import { MatLine } from "@angular/material/core";
     RouterOutlet
   ]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   links = [
     { name: 'Início', icon: 'home', path: '/dashboard' },
@@ -49,16 +50,16 @@ export class DashboardComponent {
     { name: 'Minhas Tarefas', icon: 'contact_mail', path: '/dashboard/tasks' },
   ];
 
-  constructor(
-    private modalService: ModalService
-  ) {
+  isDarkTheme?: boolean;
+
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    this.themeService.isDarkTheme.subscribe(theme => this.isDarkTheme = theme);
   }
 
-  showInfo(link: string) {
-    console.log(link);
-  }
-
-  openModal(link: any): void {
-    this.modalService.openModal(link.name, link.content);
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.themeService.setDarkTheme(this.isDarkTheme);
   }
 }

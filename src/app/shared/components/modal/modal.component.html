@@ -1,7 +1,43 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
-<mat-dialog-content>
-  <p>{{ data.content }}</p>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="closeModal()">Close</button>
-</mat-dialog-actions>
+<div class="modal">
+  <mat-card class="card-custom">
+    <mat-card-header>
+      <mat-card-title>
+        Nova mensagem
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="form-field-custom">
+        <mat-form-field appearance="outline">
+          <mat-label>Título</mat-label>
+          <input
+            matInput
+            formControlName="title"
+            required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Texto</mat-label>
+          <textarea
+            matInput
+            formControlName="text"
+            class="scrollable-content scrollbar-custom"
+            required>
+          </textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Enviar para</mat-label>
+          <input
+            matInput
+            formControlName="receiver"
+            required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions>
+        <button mat-button (click)="onCancel()" class="btn-custom">Cancelar</button>
+        <button mat-flat-button (click)="onSubmit()" class="btn-custom">Enviar</button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</div>
+

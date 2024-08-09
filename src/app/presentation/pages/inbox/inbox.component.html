@@ -1,21 +1,19 @@
 <div class="inbox-container">
 
   <mat-toolbar class="actions-bar">
-    barra de ações para mensagens
+    <button mat-button class="btn-custom" (click)="createMessage()">Nova mensagem</button>
+    <button mat-button class="btn-custom">Arquivadas</button>
+    <button mat-button class="btn-custom">Excluídas</button>
   </mat-toolbar>
 
   <mat-grid-list cols="4" rowHeight="10rem" gutterSize="0.5rem">
-    <mat-grid-tile *ngFor="let message of messages$ | async" [colspan]="1" [rowspan]="2"
-                   [style.background]="'rgba(255,255,255,0.55)'">
+    <mat-grid-tile *ngFor="let message of messages$ | async" [colspan]="1" [rowspan]="2">
       <mat-grid-tile-header>
         <div class="message-title">{{ message.title }}</div>
         <div class="message-sender">{{ message.sender }}</div>
       </mat-grid-tile-header>
-      <div>
+      <div class="scrollable-content scrollbar-custom">
         {{ message.text }}
-      </div>
-      <div>
-        Status: {{ message.status }}
       </div>
       <mat-grid-tile-footer>
         <button mat-button class="btn-custom" (click)="deleteMessage(message._id)">Deletar</button>

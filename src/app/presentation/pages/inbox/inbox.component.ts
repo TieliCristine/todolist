@@ -10,6 +10,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MessageService } from "../../../@core/services/message.service";
 import { Message, MessageStatus } from "../../../@core/models/message.model";
 import { MatToolbar, MatToolbarRow } from "@angular/material/toolbar";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalComponent } from "../../../shared/components/modal/modal.component";
 
 @Component({
   selector: 'app-inbox',
@@ -40,6 +42,7 @@ export class InboxComponent implements OnInit {
     private breakPoint: BreakpointObserver,
     private router: Router,
     private messageService: MessageService,
+    private dialog: MatDialog,
   ) {
     this.smallScreen$ = this.breakPoint.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
       map(result => result.matches),
@@ -68,23 +71,23 @@ export class InboxComponent implements OnInit {
   }
 
   createMessage(): void {
-    const newMessage: Message = {
-      text: 'This is a new message',
-      title: 'New Message',
-      sender: 'User',
-      receiver: 'User2',
-      timestamp: new Date(),
-      status: MessageStatus.Normal
-    };
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '400px',
+      data: {}
+    });
 
-    this.messageService.createMessage(newMessage).subscribe(
-      () => {
-        // Mensagem criada, não é necessário adicionar manualmente ao array
-      },
-      error => {
-        console.error('Error creating message', error);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.messageService.createMessage(result).subscribe(
+          () => {
+            console.log('Mensagem criada com sucesso');
+          },
+          error => {
+            console.error('Erro ao criar mensagem', error);
+          }
+        );
       }
-    );
+    });
   }
 
   deleteMessage(id: string | undefined): void {

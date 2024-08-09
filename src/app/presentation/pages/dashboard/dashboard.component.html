@@ -9,7 +9,14 @@
       <div>
           My ToDo List
       </div>
-      <div></div>
+      <div>
+        <button mat-icon-button (click)="toggleTheme()">
+          <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
     </mat-toolbar>
   </div>
   <div>
@@ -23,7 +30,7 @@
         </mat-nav-list>
 
       </mat-sidenav>
-      <mat-sidenav-content>
+      <mat-sidenav-content class="scrollable-content scrollbar-custom">
         <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>

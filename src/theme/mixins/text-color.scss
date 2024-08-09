@@ -1,0 +1,35 @@
+@use '@angular/material' as mat;
+
+@mixin text-color($theme) {
+
+  body.light-theme {
+    .mat-grid-tile-header,
+    .mat-grid-tile-footer {
+      color: #333333;
+    }
+
+    .cdk-drag-preview {
+      color: #772af1;
+    }
+  }
+
+  body.dark-theme {
+
+    .mat-mdc-card-title {
+      color: #fdb48b;
+    }
+
+    .mat-drawer-container {
+      color: #ffffff;
+    }
+
+    .cdk-drag-preview {
+      color: #ba8568;
+    }
+
+    //.cdk-menu-trigger,
+    .menu-standalone-trigger {
+      color: white;
+    }
+  }
+}

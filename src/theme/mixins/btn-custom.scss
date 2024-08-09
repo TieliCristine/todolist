@@ -3,15 +3,9 @@
 @mixin btn-custom($theme) {
 
   $type: mat.get-theme-type($theme);
-  $text-color: #ffffff;
-
-  @if($type == 'dark') {
-    $text-color: #ffffff;
-  }
-
 
   .btn-custom {
-    height: 2rem;
+    //height: 2rem;
     border-radius: 2rem;
     padding: 1rem !important;
     margin: 0.5rem;

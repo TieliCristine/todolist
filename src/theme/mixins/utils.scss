@@ -3,8 +3,10 @@
 @import "form-field-custom";
 @import "card-custom";
 @import "drag-drop-custom";
-@import "toolbar-custom";
+@import "actions-bar";
 @import "scrollbar-custom";
+@import "bg-glass";
+@import "text-color";
 
 /* -------------------------------------- Paleta de Cores Material ---------------------------------------------- */
 
@@ -15,6 +17,8 @@
   @include btn-custom($theme);
   @include form-field-custom($theme);
   @include drag-drop-custom($theme);
-  @include toolbar-custom($theme);
-  @include scrollbar-custom();
+  @include scrollbar-custom($theme);
+  @include actions-bar($theme);
+  @include bg-glass($theme);
+  @include text-color($theme);
 }

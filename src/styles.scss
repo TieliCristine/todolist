@@ -15,6 +15,20 @@ body {
   margin: 0;
 }
 
+//@media (prefers-color-scheme: dark) {
+  body.dark-theme {
+    background-image: url('assets/dark12.png');
+    background-size: cover;
+  }
+//}
+
+//@media (prefers-color-scheme: light) {
+  body.light-theme {
+    background-image: url('assets/bg-light-theme.png');
+    background-size: cover;
+  }
+//}
+
 html {
   @include mat.all-component-themes(light.$theme);
   @include utils.mixins(light.$theme);

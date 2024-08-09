@@ -1,34 +1,70 @@
 @use '@angular/material' as mat;
 
-@mixin scrollbar-custom() {
+@mixin scrollbar-custom($theme) {
 
-  /* Estilos para navegadores baseados no WebKit (Chrome, Safari, Edge moderno) */
-  .scrollbar-custom::-webkit-scrollbar {
-    width: 1rem; /* Largura da scrollbar */
-    background: transparent; /* Fundo transparente */
+  body.light-theme {
+
+    /* Estilos para navegadores baseados no WebKit (Chrome, Safari, Edge moderno) */
+    .scrollbar-custom::-webkit-scrollbar {
+      width: 1rem; /* Largura da scrollbar */
+      background: transparent; /* Fundo transparente */
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background: #AB5AC64C; /* Cor da "polegar" da scrollbar com transparência */
+      border-radius: 4px; /* Cantos arredondados */
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+      background: #AB5AC691; /* Cor da "polegar" da scrollbar quando em hover */
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background: transparent; /* Fundo da track transparente */
+    }
+
+    /* Estilos para o Firefox */
+    .scrollbar-custom {
+      scrollbar-width: thin; /* Largura fina */
+      scrollbar-color: #AB5AC64C transparent; /* Cor da scrollbar e fundo */
+    }
+
+    .scrollbar-custom:hover {
+      scrollbar-color: #AB5AC691 transparent; /* Cor da scrollbar quando em hover */
+    }
+
   }
 
-  .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: rgba(108, 34, 143, 0.15); /* Cor da "polegar" da scrollbar com transparência */
-    border-radius: 4px; /* Cantos arredondados */
-  }
+  body.dark-theme {
 
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    background: rgba(102, 27, 133, 0.36); /* Cor da "polegar" da scrollbar quando em hover */
-  }
+    /* Estilos para navegadores baseados no WebKit (Chrome, Safari, Edge moderno) */
+    .scrollbar-custom::-webkit-scrollbar {
+      width: 1rem; /* Largura da scrollbar */
+      background: transparent; /* Fundo transparente */
+    }
 
-  .scrollbar-custom::-webkit-scrollbar-track {
-    background: transparent; /* Fundo da track transparente */
-  }
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background: #E1A07C2F; /* Cor da "polegar" da scrollbar com transparência */
+      border-radius: 4px; /* Cantos arredondados */
+    }
 
-  /* Estilos para o Firefox */
-  .scrollbar-custom {
-    scrollbar-width: thin; /* Largura fina */
-    scrollbar-color: rgba(108, 34, 143, 0.15) transparent; /* Cor da scrollbar e fundo */
-  }
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+      background: #E1A07C91; /* Cor da "polegar" da scrollbar quando em hover */
+    }
 
-  .scrollbar-custom:hover {
-    scrollbar-color: rgba(102, 27, 133, 0.36) transparent; /* Cor da scrollbar quando em hover */
-  }
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background: transparent; /* Fundo da track transparente */
+    }
 
+    /* Estilos para o Firefox */
+    .scrollbar-custom {
+      scrollbar-width: thin; /* Largura fina */
+      scrollbar-color: #E1A07C2F transparent; /* Cor da scrollbar e fundo */
+    }
+
+    .scrollbar-custom:hover {
+      scrollbar-color: #E1A07C91 transparent; /* Cor da scrollbar quando em hover */
+    }
+
+  }
 }

@@ -36,7 +36,12 @@ export class MessageService {
   }
 
   createMessage(message: Message): Observable<Message> {
-    return this.http.post<Message>(this.apiUrl, message);
+    return this.http.post<Message>(this.apiUrl, message).pipe(
+      tap(newMessage => {
+        this.messages.push(newMessage);
+        this.messagesSubject.next([...this.messages]);
+      })
+    );
   }
 
   updateMessageStatus(id: string, status: MessageStatus): void {
