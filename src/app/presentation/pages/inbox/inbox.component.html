@@ -6,8 +6,18 @@
     <button mat-button class="btn-custom">Excluídas</button>
   </mat-toolbar>
 
-  <mat-grid-list cols="4" rowHeight="10rem" gutterSize="0.5rem">
-    <mat-grid-tile *ngFor="let message of messages$ | async" [colspan]="1" [rowspan]="2">
+  <mat-grid-list [cols]="gridCols" rowHeight="10rem" gutterSize="0.5rem">
+    <mat-grid-tile
+      *ngFor="let message of messages$ | async"
+      [colspan]="1"
+      [rowspan]="tileRowspan"
+      [ngClass]="{
+      'tile-small': isSmallScreen,
+      'tile-medium': isMediumScreen,
+      'tile-large': isLargeScreen
+      }"
+    >
+
       <mat-grid-tile-header>
         <div class="message-title">{{ message.title }}</div>
         <div class="message-sender">{{ message.sender }}</div>

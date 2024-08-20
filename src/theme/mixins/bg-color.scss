@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@mixin bg-glass($theme) {
+@mixin bg-color($theme) {
 
   body.light-theme {
     .mat-toolbar,
@@ -93,7 +93,7 @@
 
     .menu {
 
-      background: rgb(0, 0, 0);
+      background: rgb(62, 62, 62);
 
       .menu-item:hover {
         background-color: rgba(227, 162, 126, 0.62);

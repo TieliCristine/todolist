@@ -2,15 +2,15 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { map, Observable } from "rxjs";
-import { AsyncPipe, DatePipe, NgForOf } from "@angular/common";
+import { AsyncPipe, DatePipe, NgClass, NgForOf } from "@angular/common";
 import { Router, RouterOutlet } from "@angular/router";
+import { MatToolbar, MatToolbarRow } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
+import { MatDialog } from "@angular/material/dialog";
+import { map, Observable } from "rxjs";
 
 import { MessageService } from "../../../@core/services/message.service";
 import { Message, MessageStatus } from "../../../@core/models/message.model";
-import { MatToolbar, MatToolbarRow } from "@angular/material/toolbar";
-import { MatDialog } from "@angular/material/dialog";
 import { ModalComponent } from "../../../shared/components/modal/modal.component";
 
 @Component({
@@ -28,13 +28,18 @@ import { ModalComponent } from "../../../shared/components/modal/modal.component
     NgForOf,
     DatePipe,
     MatToolbarRow,
-    MatToolbar
+    MatToolbar,
+    NgClass
   ]
 })
 export class InboxComponent implements OnInit {
 
-  // exemplo = 'Olá'
-  smallScreen$: Observable<boolean>;
+  gridCols = 4
+  tileRowspan = 2;
+  isSmallScreen = false;
+  isMediumScreen = false;
+  isLargeScreen = false;
+  // smallScreen$: Observable<boolean>;
   messages$: Observable<Message[]>;
 
 
@@ -44,9 +49,9 @@ export class InboxComponent implements OnInit {
     private messageService: MessageService,
     private dialog: MatDialog,
   ) {
-    this.smallScreen$ = this.breakPoint.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
-      map(result => result.matches),
-    )
+    // this.smallScreen$ = this.breakPoint.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+    //   map(result => result.matches),
+    // )
     // this.smallScreen$.subscribe(result => console.log(result))
     // this.breakPoint.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe(result => console.log(result));
 
@@ -55,6 +60,28 @@ export class InboxComponent implements OnInit {
 
   ngOnInit(): void {
     this.messageService.getMessages();
+    this.breakPoint.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large
+    ]).subscribe(result => {
+      if (result.matches) {
+        if (result.breakpoints[Breakpoints.XSmall]) {
+          this.gridCols = 1;
+          this.tileRowspan = 1;
+        } else if (result.breakpoints[Breakpoints.Small]) {
+          this.gridCols = 2;
+          this.tileRowspan = 1;
+        } else if (result.breakpoints[Breakpoints.Medium]) {
+          this.gridCols = 3;
+          this.tileRowspan = 2;
+        } else if (result.breakpoints[Breakpoints.Large]) {
+          this.gridCols = 4;
+          this.tileRowspan = 2;
+        }
+      }
+    });
   }
 
 
@@ -65,7 +92,7 @@ export class InboxComponent implements OnInit {
       sender: 'User2',
       receiver: message.sender,
       timestamp: new Date(),
-      status: MessageStatus.Normal,
+      status: MessageStatus.NORMAL,
     };
     this.messageService.sendMessage(replyMessage);
   }
@@ -112,3 +139,13 @@ export class InboxComponent implements OnInit {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+

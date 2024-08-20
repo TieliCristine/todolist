@@ -1,7 +1,7 @@
 export enum MessageStatus {
-  Normal = 'normal',
-  Arquivado = 'arquivado',
-  Deleted = 'deleted',
+  NORMAL = 'NORMAL',      // UPPER_CASE
+  ARCHIVED = 'ARCHIVED',
+  DELETED = 'DELETED'
 }
 
 export interface Message {

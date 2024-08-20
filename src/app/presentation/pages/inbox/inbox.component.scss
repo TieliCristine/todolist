@@ -26,3 +26,19 @@
     }
   }
 }
+
+
+.tile-small {
+  /* Estilos para telas pequenas */
+  background-color: rgba(255, 0, 0, 0.1); /* Exemplo: fundo vermelho claro */
+}
+
+.tile-medium {
+  /* Estilos para telas médias */
+  background-color: rgba(0, 255, 0, 0.1); /* Exemplo: fundo verde claro */
+}
+
+.tile-large {
+  /* Estilos para telas grandes */
+  background-color: rgba(0, 0, 255, 0.1); /* Exemplo: fundo azul claro */
+}

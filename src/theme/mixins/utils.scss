@@ -5,7 +5,7 @@
 @import "drag-drop-custom";
 @import "actions-bar";
 @import "scrollbar-custom";
-@import "bg-glass";
+@import "bg-color";
 @import "text-color";
 
 /* -------------------------------------- Paleta de Cores Material ---------------------------------------------- */
@@ -19,6 +19,6 @@
   @include drag-drop-custom($theme);
   @include scrollbar-custom($theme);
   @include actions-bar($theme);
-  @include bg-glass($theme);
+  @include bg-color($theme);
   @include text-color($theme);
 }
