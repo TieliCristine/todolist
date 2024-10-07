@@ -12,10 +12,11 @@ import {
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
 import { MatListModule } from "@angular/material/list";
 
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatLine } from "@angular/material/core";
 
 import { ThemeService } from "../../@core/application/services/theme.service";
+import { AuthService } from '../../@core/application/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,7 +53,11 @@ export class DashboardComponent implements OnInit {
 
   isDarkTheme?: boolean;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.themeService.isDarkTheme.subscribe(theme => this.isDarkTheme = theme);
@@ -61,5 +66,10 @@ export class DashboardComponent implements OnInit {
   toggleTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
     this.themeService.setDarkTheme(this.isDarkTheme);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 }
