@@ -14,7 +14,10 @@
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>
-          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">A fazer</button>
+          <button mat-button [cdkMenuTriggerFor]="menu">A fazer</button>
+          <button mat-icon-button (click)="createTask(form)">
+            <mat-icon>add</mat-icon>
+          </button>
           <ng-template #menu>
             <div class="menu" cdkMenu>
               <button class="menu-item" cdkMenuItem>Refresh</button>
@@ -44,7 +47,10 @@
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>
-          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Em progresso</button>
+          <button mat-button [cdkMenuTriggerFor]="menu">Em progresso</button>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
           <ng-template #menu>
             <div class="menu" cdkMenu>
               <button class="menu-item" cdkMenuItem>Refresh</button>
@@ -74,7 +80,10 @@
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>
-          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Feito</button>
+          <button mat-button [cdkMenuTriggerFor]="menu">Feito</button>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
           <ng-template #menu>
             <div class="menu" cdkMenu>
               <button class="menu-item" cdkMenuItem>Refresh</button>
@@ -106,15 +115,19 @@
     <mat-card>
       <mat-card-header>
         <mat-card-subtitle>
-          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Adicionar etapa +</button>
-          <ng-template #menu>
-            <div class="menu" cdkMenu>
-              <button class="menu-item" cdkMenuItem>Refresh</button>
-              <button class="menu-item" cdkMenuItem>Settings</button>
-              <button class="menu-item" cdkMenuItem>Help</button>
-              <button class="menu-item" cdkMenuItem>Sign out</button>
-            </div>
-          </ng-template>
+<!--          <button mat-button [cdkMenuTriggerFor]="menu" class="menu-standalone-trigger">Adicionar etapa</button>-->
+          <button mat-button>Adicionar etapa</button>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+<!--          <ng-template #menu>-->
+<!--            <div class="menu" cdkMenu>-->
+<!--              <button class="menu-item" cdkMenuItem>Refresh</button>-->
+<!--              <button class="menu-item" cdkMenuItem>Settings</button>-->
+<!--              <button class="menu-item" cdkMenuItem>Help</button>-->
+<!--              <button class="menu-item" cdkMenuItem>Sign out</button>-->
+<!--            </div>-->
+<!--          </ng-template>-->
         </mat-card-subtitle>
       </mat-card-header>
     </mat-card>

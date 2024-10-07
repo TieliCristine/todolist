@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 
-import { Message, MessageStatus } from '../models/message.model';
+import { Message, MessageStatus } from '../../domain/models/message.model';
 import { tap } from "rxjs/operators";
 
 @Injectable({

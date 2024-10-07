@@ -8,7 +8,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatRadioModule } from "@angular/material/radio";
 import { Router } from "@angular/router";
 
-import { AuthService } from "../../../@core/services/auth.service";
+import { AuthService } from "../../@core/application/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -50,10 +50,9 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe({
+      this.authService.login(this.loginForm.value).subscribe({
         next: () => this.router.navigate(['/dashboard']),
-        error: () => this.errorMessage = 'Login inválido. Tente novamente.'
+        error: (err) => (this.errorMessage = 'Invalid login credentials'),
       });
     }
   }
