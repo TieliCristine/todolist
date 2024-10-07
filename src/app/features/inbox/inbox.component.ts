@@ -9,9 +9,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { map, Observable } from "rxjs";
 
-import { MessageService } from "../../../@core/services/message.service";
-import { Message, MessageStatus } from "../../../@core/models/message.model";
-import { ModalComponent } from "../../../shared/components/modal/modal.component";
+import { MessageService } from "../../@core/application/services/message.service";
+import { Message, MessageStatus } from "../../@core/domain/models/message.model";
+import { ModalComponent } from "../../shared/components/modal/modal.component";
 
 @Component({
   selector: 'app-inbox',
