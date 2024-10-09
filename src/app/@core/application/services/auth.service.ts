@@ -14,15 +14,12 @@ export class AuthService {
 
   constructor(private apiService: ApiService) {}
 
-  login(credentials: AuthCredentials): Observable<User> {
+  login(credentials: AuthCredentials) {
     console.log("credentials", credentials);
-    return this.apiService.post<User>(`auth/login`, credentials).pipe(
-      tap((user) => {
-        this.currentUser = user;
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', user.token!); // Assuming the token is part of the user object
-      })
-    );
+    this.apiService.login(credentials).subscribe({
+      // next: () => this.router.navigate(['/dashboard']),
+      // error: (err) => (this.openSnackBar(err.message)),
+    });
   }
 
   logout(): void {

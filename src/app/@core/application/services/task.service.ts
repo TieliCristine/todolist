@@ -12,14 +12,14 @@ export class TaskService {
   constructor(private apiService: ApiService) {
   }
 
-  save(title: string, description: string, status: string): Observable<any> {
-    return this.apiService.post('save', { title, description, status }).pipe(
-      tap(response => {
-        if (response.status === 200) {
-          console.log("Tarefa salva.")
-        }
-      })
-    )
+  save(title: string, description: string, status: string) {
+    // return this.apiService.post('save', { title, description, status }).pipe(
+    //   tap(response => {
+    //     // if (response.status === 200) {
+    //     //   console.log("Tarefa salva.")
+    //     // }
+    //   })
+    // )
   }
 
 }

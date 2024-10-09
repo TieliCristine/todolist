@@ -51,10 +51,7 @@ export class LoginComponent {
       this.loginForm.markAsTouched();
       return;
     }
-    this.authService.login(this.loginForm.value).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
-      error: (err) => (this.openSnackBar(err.message)),
-    });
+    this.authService.login(this.loginForm.value)
   }
 
   openSnackBar(msg: string): void {
