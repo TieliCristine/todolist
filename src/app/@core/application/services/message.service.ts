@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 
-import { Message, MessageStatus } from '../../domain/models/message.model';
+import { Message } from '../../domain/interface/message.interface';
 import { tap } from "rxjs/operators";
+import { MessageStatus } from '../../domain/enum/message-status.enum';
 
 @Injectable({
   providedIn: 'root',

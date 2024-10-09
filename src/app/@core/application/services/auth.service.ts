@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { ApiService } from "./api.service";
-import { User } from "../../domain/models/user.model";
-import { AuthCredentials } from "../../domain/models/auth-credentials.model";
+import { User } from "../../domain/interface/user.interface";
+import { AuthCredentials } from "../../domain/interface/auth-credentials.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,12 @@ export class AuthService {
 
   constructor(private apiService: ApiService) {}
 
-  login(credentials: AuthCredentials): Observable<User> {
+  login(credentials: AuthCredentials) {
     console.log("credentials", credentials);
-    return this.apiService.post<User>(`auth/login`, credentials).pipe(
-      tap((user) => {
-        this.currentUser = user;
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', user.token!); // Assuming the token is part of the user object
-      })
-    );
+    this.apiService.login(credentials).subscribe({
+      // next: () => this.router.navigate(['/dashboard']),
+      // error: (err) => (this.openSnackBar(err.message)),
+    });
   }
 
   logout(): void {

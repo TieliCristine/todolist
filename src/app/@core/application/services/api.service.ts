@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { first, Observable } from 'rxjs';
-import { User } from "../../domain/models/user.model";
+import { User } from "../../domain/interface/user.interface";
+import { AuthCredentials } from '../../domain/interface/auth-credentials.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,9 @@ export class ApiService {
     });
   }
 
-  // genérico para requisições POST
-  post<T>(endpoint: string, data: any): Observable<T> {
-    console.log(endpoint, data, 'post api.service');
-    return this.http.post<T>(`${this.apiUrl}/${endpoint}`, data, {
+  login(credentials: AuthCredentials): Observable<User> {
+    console.log(credentials, 'post api.service');
+    return this.http.post<User>(`auth/login`, credentials, {
       headers: this.getHeaders(),
     }).pipe(
       first()

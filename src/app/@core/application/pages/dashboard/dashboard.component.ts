@@ -15,8 +15,8 @@ import { MatListModule } from "@angular/material/list";
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatLine } from "@angular/material/core";
 
-import { ThemeService } from "../../@core/application/services/theme.service";
-import { AuthService } from '../../@core/application/services/auth.service';
+import { ThemeService } from "../../services/theme.service";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
