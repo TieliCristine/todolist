@@ -5,9 +5,11 @@ import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatToolbar } from "@angular/material/toolbar";
 import { TaskService } from "../../@core/application/services/task.service";
-import { Task, TaskStatus } from "../../@core/domain/models/task.model";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { TaskStatus } from '../../@core/domain/models/task.model';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { MatIcon } from "@angular/material/icon";
+import { NgIf } from '@angular/common';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-tasks',
@@ -24,7 +26,10 @@ import { MatIcon } from "@angular/material/icon";
     CdkDropList,
     CdkDrag,
     MatToolbar,
-    MatIcon
+    MatIcon,
+    FormsModule,
+    NgIf,
+    MatInput
   ]
 })
 export class TasksComponent {
@@ -59,14 +64,8 @@ export class TasksComponent {
     }
   }
 
-  createTask(form: FormGroup) {
-    if (this.form.invalid) {
-      const {title, description, status} = this.form.value;
-      this.taskService.save(title, description, status).subscribe({
-        next: () => this.getTasks(),
-        error: () => this.errorMessage = 'Erro ao criar tarefa.'
-      });
-    }
+  createTask() {
+    console.log('Função createTask acionada')
   }
 
   getTasks() {

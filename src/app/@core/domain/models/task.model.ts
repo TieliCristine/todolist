@@ -1,13 +1,21 @@
 export enum TaskStatus {
+  BACKLOG = 'BACKLOG',
+  PENDING = 'PENDING',
   TODO = 'TODO',
-  IN_PROGRESS = 'IN_PROGRESS',
+  PROCESSING = 'PROCESSING',
   DONE = 'DONE'
 }
 
 export interface Task {
-  _id?: string;
+  _id?: number;
   title: string;
   description: string;
   timestamp?: Date;
   status: TaskStatus;
+}
+
+export interface TaskField {
+  id: number;
+  name: string;
+  tasks: string[];
 }

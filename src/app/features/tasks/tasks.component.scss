@@ -11,6 +11,17 @@
   }
 }
 
+.new-task-input {
+  background: rgba(225, 92, 0, 0.15);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  padding: 5px 10px;
+  margin-bottom: 1rem;
+  border: none;
+}
+
 .scrollable-content {
   max-height: 35rem; /* Defina a altura máxima desejada */
   overflow-y: auto; /* Adicione uma barra de rolagem vertical se o conteúdo exceder a altura máxima */
