@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { ApiService } from "./api.service";
-import { User } from "../../domain/models/user.model";
-import { AuthCredentials } from "../../domain/models/auth-credentials.model";
+import { User } from "../../domain/interface/user.interface";
+import { AuthCredentials } from "../../domain/interface/auth-credentials.interface";
 
 @Injectable({
   providedIn: 'root'

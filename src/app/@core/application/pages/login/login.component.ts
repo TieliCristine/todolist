@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -6,9 +6,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatRadioModule } from "@angular/material/radio";
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from "@angular/router";
 
-import { AuthService } from "../../@core/application/services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string;
   hide = signal(true);
+  _snackBar = inject(MatSnackBar);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,17 +53,11 @@ export class LoginComponent {
     }
     this.authService.login(this.loginForm.value).subscribe({
       next: () => this.router.navigate(['/dashboard']),
-      error: (err) => (this.errorMessage = 'Invalid login credentials'),
+      error: (err) => (this.openSnackBar(err.message)),
     });
   }
 
-
-  // submit(): void {
-  //   if (this.loginForm.valid) {
-  //     this.authService.login(this.loginForm.value).subscribe({
-  //       next: () => this.router.navigate(['/dashboard']),
-  //       error: (err) => (this.errorMessage = 'Invalid login credentials'),
-  //     });
-  //   }
-  // }
+  openSnackBar(msg: string): void {
+    this._snackBar.open(msg);
+  }
 }

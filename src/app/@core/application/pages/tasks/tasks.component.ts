@@ -4,12 +4,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from "@angular/cdk/menu";
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatToolbar } from "@angular/material/toolbar";
-import { TaskService } from "../../@core/application/services/task.service";
-import { TaskStatus } from '../../@core/domain/models/task.model';
+import { TaskService } from "../../services/task.service";
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { MatIcon } from "@angular/material/icon";
 import { NgIf } from '@angular/common';
 import { MatInput } from '@angular/material/input';
+import { TaskStatus } from '../../../domain/enum/task-status.enum';
 
 @Component({
   selector: 'app-tasks',
