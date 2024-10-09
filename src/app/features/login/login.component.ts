@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Signal, signal } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -29,7 +29,8 @@ import { AuthService } from "../../@core/application/services/auth.service";
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage: string;
+  hide = signal(true);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,20 +41,27 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+    this.errorMessage = '';
   }
 
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
-    event.stopPropagation();
-  }
-
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: () => this.router.navigate(['/dashboard']),
-        error: (err) => (this.errorMessage = 'Invalid login credentials'),
-      });
+  submit(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAsTouched();
+      return;
     }
+    this.authService.login(this.loginForm.value).subscribe({
+      next: () => this.router.navigate(['/dashboard']),
+      error: (err) => (this.errorMessage = 'Invalid login credentials'),
+    });
   }
+
+
+  // submit(): void {
+  //   if (this.loginForm.valid) {
+  //     this.authService.login(this.loginForm.value).subscribe({
+  //       next: () => this.router.navigate(['/dashboard']),
+  //       error: (err) => (this.errorMessage = 'Invalid login credentials'),
+  //     });
+  //   }
+  // }
 }
