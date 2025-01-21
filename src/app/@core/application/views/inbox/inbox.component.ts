@@ -11,8 +11,8 @@ import { map, Observable } from "rxjs";
 
 import { MessageService } from "../../services/message.service";
 import { Message } from "../../../domain/interface/message.interface";
-import { ModalComponent } from "../../components/modal/modal.component";
 import { MessageStatus } from '../../../domain/enum/message-status.enum';
+import { CreateMessageComponent } from '../../components/create-message/create-message.component';
 
 @Component({
   selector: 'app-inbox',
@@ -99,7 +99,7 @@ export class InboxComponent implements OnInit {
   }
 
   createMessage(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(CreateMessageComponent, {
       width: '400px',
       data: {}
     });

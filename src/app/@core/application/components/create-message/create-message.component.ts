@@ -10,9 +10,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss',
+  selector: 'app-create-message',
+  templateUrl: './create-message.component.html',
+  styleUrl: './create-message.component.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,12 +25,12 @@ import { MatCardModule } from "@angular/material/card";
     ReactiveFormsModule
   ]
 })
-export class ModalComponent {
+export class CreateMessageComponent {
 
   messageForm: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<ModalComponent>,
+    public dialogRef: MatDialogRef<CreateMessageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
   ) {
@@ -51,7 +51,7 @@ export class ModalComponent {
     if (this.messageForm.valid) {
       const messageData = this.messageForm.value;
       this.dialogRef.close(messageData);
-      console.log("onSubmit() modal enviando: ", messageData);
+      console.log("onSubmit() create-message enviando: ", messageData);
     }
   }
 }

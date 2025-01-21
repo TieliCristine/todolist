@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from "./@core/application/pages/login/login.component";
-import { DashboardComponent } from "./@core/application/pages/dashboard/dashboard.component";
-import { InboxComponent } from "./@core/application/pages/inbox/inbox.component";
-import { TasksComponent } from "./@core/application/pages/tasks/tasks.component";
-import { StartComponent } from './@core/application/pages/start/start.component';
+import { LoginComponent } from "./@core/application/views/login/login.component";
+import { DashboardComponent } from "./@core/application/views/dashboard/dashboard.component";
+import { InboxComponent } from "./@core/application/views/inbox/inbox.component";
+import { TasksComponent } from "./@core/application/views/tasks/tasks.component";
+import { StartComponent } from './@core/application/views/start/start.component';
 import { AuthGuard } from './@core/infra/security/guards/auth.guard';
 
 export const routes: Routes = [
